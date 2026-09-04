@@ -1,0 +1,55 @@
+body {
+    background-color: rgb(8, 8, 8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    padding: 100px;
+}
+
+#weather-card {
+    background-color: rgb(36, 34, 35);
+    padding: 50px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.14);
+}
+
+h2 {
+    color: goldenrod;
+}
+
+#cityInput {
+    border: 2px solid;
+    border-radius: 10px;
+    border-color: lightgray;
+    font-size: 15px;
+    padding: 10px;
+    outline: none;
+}
+
+#searchbt {
+    background-color: goldenrod;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    color: black;
+}
+
+#searchbt:hover {
+    background-color: yellow;
+}
+
+#cityName {
+    color: aliceblue;
+}
+
+#temperature {
+    color: aliceblue;
+}
+
+#statusMsg {
+    color: red;
+}
