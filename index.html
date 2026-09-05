@@ -1,26 +1,43 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>SkyCast Weather</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
 
     <div id="weather-card">
-        
+
         <h2>SkyCast Weather</h2>
-        
-        <input type="text" id="cityInput" placeholder="Enter City Name">
-        <button id="searchbt">Search</button>
+
+        <div class="search-box">
+            <input type="text" id="cityInput" placeholder="Enter City Name">
+            <button id="searchbt"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
 
         <p id="statusMsg"></p>
-        <h3 id="cityName"></h3>
-        <h1 id="temperature"></h1>
-        <h3 id="windSpeed"></h3>
+
+        <div>
+            <i id="mainIcon" class="fa-solid fa-cloud"></i>
+            <h3 id="cityName">Enter a city</h3>
+            <h1 id="temperature">--°C</h1>
+            <h3 id="windSpeed">
+                <i class="fa-solid fa-wind"></i>
+                Wind: --km/h
+            </h3>
+            <h3 id="humidity">
+                <i class="fa-solid fa-droplet"></i>
+                Humidity: --%
+            </h3>
+        </div>
 
     </div>
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
