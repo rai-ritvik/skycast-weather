@@ -14,7 +14,7 @@
         <h2>SkyCast Weather</h2>
 
         <div class="search-box">
-            <input type="text" id="cityInput" placeholder="Enter City Name">
+            <input type="text" id="cityInput" placeholder="Enter Here">
             <button id="searchbt"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
 
@@ -24,17 +24,45 @@
             <i id="mainIcon" class="fa-solid fa-cloud"></i>
             <h3 id="cityName">Enter a city</h3>
             <h1 id="temperature">--°C</h1>
-            <h3 id="windSpeed">
-                <i class="fa-solid fa-wind"></i>
-                Wind: --km/h
-            </h3>
-            <h3 id="humidity">
-                <i class="fa-solid fa-droplet"></i>
-                Humidity: --%
-            </h3>
+
+            <div class="details">
+
+                <div class="stat">
+                    <p><i class="fa-solid fa-temperature-half"></i> Feels Like</p>
+                    <h3 id="feelsLike">--°C</h3>
+                </div>
+
+                <div class="stat">
+                    <p><i class="fa-solid fa-droplet"></i> Humidity</p>
+                    <h3 id="humidity">--%</h3>
+                </div>
+
+                <div class="stat">
+                    <p><i class="fa-solid fa-wind"></i> Wind Speed</p>
+                    <h3 id="windSpeed">--km/h</h3>
+                </div>
+
+                <div class="stat">
+                    <p><i class="fa-solid fa-gauge"></i> Pressure</p>
+                    <h3 id="pressure">hPa</h3>
+                </div>
+
+                <div class="stat">
+                    <p><i class="fa-solid fa-eye"></i> Visibility</p>
+                    <h3 id="visibility">--km</h3>
+                </div>
+
+                <div class="stat">
+                    <p><i class="fa-solid fa-clock"></i> Last Updated</p>
+                    <h3 id="lastUpdated">--:--</h3>
+                </div>
+            </div>
+
         </div>
 
     </div>
+
+    <p class="copyright">Designed & Developed by Ritvik Rai</p>
 
     <script src="script.js"></script>
 
