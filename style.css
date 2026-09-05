@@ -1,14 +1,20 @@
 body {
-    background-color: rgb(8, 8, 8);
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    min-height: 100vh;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: sans-serif;
     padding: 100px;
+    flex-direction: column;
 }
 
 #weather-card {
-    background-color: rgb(36, 34, 35);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: aliceblue;
     padding: 50px;
     border-radius: 30px;
     text-align: center;
@@ -16,30 +22,64 @@ body {
 }
 
 h2 {
-    color: goldenrod;
+    color: white;
+    letter-spacing: 2px;
+    font-weight: 400;
 }
 
 #cityInput {
-    border: 2px solid;
-    border-radius: 10px;
-    border-color: lightgray;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
     font-size: 15px;
     padding: 10px;
     outline: none;
+    transition: 0.3s ease;
+}
+
+#cityInput:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+#cityInput::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#cityInput:focus {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.4);  
+}
+
+#cityInput:active {
+    transform: scale(0.95);
 }
 
 #searchbt {
-    background-color: goldenrod;
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 0;
     border: none;
     cursor: pointer;
-    color: black;
+    transition: 0.3s ease;
 }
 
 #searchbt:hover {
-    background-color: yellow;
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+#searchbt:focus {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+#searchbt:active {
+    transform: scale(0.90);
 }
 
 #cityName {
@@ -51,5 +91,42 @@ h2 {
 }
 
 #statusMsg {
-    color: red;
+    color: #ffb8b8;
+    font-size: 14px;
+    margin-top: -10px;
+}
+
+.search-box {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.stat {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 15px;
+    transition: 0.3s ease;
+}
+
+.stat:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.stat:active {
+    transform: scale(0.95);
+}
+
+.copyright {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    margin-top: 20px;
 }
