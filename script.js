@@ -30,33 +30,8 @@ async function doSearch() {
         const lat = data.results[0].latitude;
         const lon = data.results[0].longitude;
 
-        const weatherResponse = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,surface_pressure,visibility,wind_speed_10m,wind_direction_10m`);
+        await fetchAndDisplayWeather(lat, lon, data.results[0].name);
 
-
-        const weatherData = await weatherResponse.json();
-
-        console.log(data);
-        console.log(weatherData);
-
-        const foundCity = data.results[0].name;
-
-        cityNameDisplay.textContent = foundCity;
-
-        tempDisplay.textContent = `${weatherData.current.temperature_2m} °C`;
-
-        feelsLikeDisplay.textContent = `${weatherData.current.apparent_temperature} °C`;
-
-        humidityDisplay.textContent = `${weatherData.current.relative_humidity_2m}%`;
-
-        windSpeedDisplay.textContent = `${weatherData.current.wind_speed_10m}km/h`;
-
-        pressureDisplay.textContent = `${weatherData.current.surface_pressure}hPa`;
-
-        visibilityDisplay.textContent = `${weatherData.current.visibility / 1000}km`;
-
-        lastUpdatedDisplay.textContent = weatherData.current.time.split("T")[1];
-
-        mainIconDisplay.className = getWeatherIcon(weatherData.current.weather_code);
     }
 
     catch (error) {
@@ -91,5 +66,60 @@ function getWeatherIcon(weatherCode) {
     }
     else {
         return "fa-solid fa-smog";
+    }
+}
+
+function getLocalWeather() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                console.log("Success");
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                fetchAndDisplayWeather(lat, lon, "Your Location");
+            },
+            (error) => {
+                console.log(error)
+            }
+        );
+    }
+    else {
+        console.log("no GPS");
+    }
+}
+
+window.addEventListener("load", getLocalWeather);
+
+async function fetchAndDisplayWeather(lat, lon, cityName) {
+    try {
+        const weatherResponse = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,surface_pressure,visibility,wind_speed_10m,wind_direction_10m`);
+
+
+        const weatherData = await weatherResponse.json();
+
+        console.log(weatherData);
+
+
+        cityNameDisplay.textContent = cityName;
+
+        tempDisplay.textContent = `${weatherData.current.temperature_2m} °C`;
+
+        feelsLikeDisplay.textContent = `${weatherData.current.apparent_temperature} °C`;
+
+        humidityDisplay.textContent = `${weatherData.current.relative_humidity_2m}%`;
+
+        windSpeedDisplay.textContent = `${weatherData.current.wind_speed_10m}km/h`;
+
+        pressureDisplay.textContent = `${weatherData.current.surface_pressure}hPa`;
+
+        visibilityDisplay.textContent = `${weatherData.current.visibility / 1000}km`;
+
+        lastUpdatedDisplay.textContent = weatherData.current.time.split("T")[1];
+
+        mainIconDisplay.className = getWeatherIcon(weatherData.current.weather_code);
+    }
+
+    catch (error) {
+        statusDisplay.textContent = error.message;
     }
 }
