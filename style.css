@@ -130,3 +130,29 @@ h2 {
     font-size: 12px;
     margin-top: 20px;
 }
+
+#gpsBtn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#gpsBtn:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+#gpsBtn:focus {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+#gpsBtn:active {
+    transform: scale(0.90);
+}

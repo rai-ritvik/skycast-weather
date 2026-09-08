@@ -10,6 +10,7 @@ const windSpeedDisplay = document.getElementById("windSpeed");
 const pressureDisplay = document.getElementById("pressure");
 const visibilityDisplay = document.getElementById("visibility");
 const lastUpdatedDisplay = document.getElementById("lastUpdated");
+const gpsbtn = document.getElementById("gpsBtn");
 
 async function doSearch() {
     const typedCity = cityInput.value;
@@ -47,6 +48,8 @@ cityInput.addEventListener("keydown", (e) => {
         doSearch();
     }
 });
+
+gpsbtn.addEventListener("click", getLocalWeather);
 
 function getWeatherIcon(weatherCode) {
     if (weatherCode === 0) {
