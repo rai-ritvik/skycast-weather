@@ -11,6 +11,7 @@ const pressureDisplay = document.getElementById("pressure");
 const visibilityDisplay = document.getElementById("visibility");
 const lastUpdatedDisplay = document.getElementById("lastUpdated");
 const gpsbtn = document.getElementById("gpsBtn");
+const hourlyForecastDisplay = document.getElementById("hourlyForecast");
 
 async function doSearch() {
     const typedCity = cityInput.value;
@@ -95,7 +96,7 @@ window.addEventListener("load", getLocalWeather);
 
 async function fetchAndDisplayWeather(lat, lon, cityName) {
     try {
-        const weatherResponse = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,surface_pressure,visibility,wind_speed_10m,wind_direction_10m`);
+        const weatherResponse = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,surface_pressure,visibility,wind_speed_10m,wind_direction_10m&hourly=temperature_2m,weather_code`);
 
 
         const weatherData = await weatherResponse.json();
@@ -120,6 +121,23 @@ async function fetchAndDisplayWeather(lat, lon, cityName) {
         lastUpdatedDisplay.textContent = weatherData.current.time.split("T")[1];
 
         mainIconDisplay.className = getWeatherIcon(weatherData.current.weather_code);
+
+        hourlyForecastDisplay.innerHTML = "";
+        for (let i = 0; i < 24; i++) {
+            let rawTime = weatherData.hourly.time[i];
+            let time = rawTime.split("T")[1];
+            let temp = weatherData.hourly.temperature_2m[i];
+            let code = weatherData.hourly.weather_code[i];
+            const iconClass = getWeatherIcon(code);
+            const cardHTML = `
+            <div class="hourly-card">
+            <p>${time}</p>
+            <i class="${iconClass}"></i>
+            <h4>${temp}°C</h4>
+            </div>
+            `;
+            hourlyForecastDisplay.innerHTML += cardHTML;
+        }
     }
 
     catch (error) {

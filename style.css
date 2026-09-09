@@ -19,6 +19,7 @@ body {
     border-radius: 30px;
     text-align: center;
     box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.14);
+    max-width: 300px;
 }
 
 h2 {
@@ -49,7 +50,7 @@ h2 {
 
 #cityInput:focus {
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.4);  
+    background: rgba(255, 255, 255, 0.4);
 }
 
 #cityInput:active {
@@ -155,4 +156,38 @@ h2 {
 
 #gpsBtn:active {
     transform: scale(0.90);
+}
+
+#hourlyForecast {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    margin-top: 25px;
+    padding-bottom: 10px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.hourly-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 15px;
+    min-width: 70px;
+    text-align: center;
+}
+
+.hourly-card p {
+    font-size: 14px;
+    margin: 0;
+    color: #e0e0e0;
+}
+
+.hourly-card i {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.hourly-card h4 {
+    font-size: 18px;
+    margin: 0;
 }
